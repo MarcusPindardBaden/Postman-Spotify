@@ -17,3 +17,17 @@ Steps to replay tests
 - run the command: newman run 'x.postman_collection.json -g SpotifyWorkspace.postman_globals.json' where x is the type of collection you want to be run
 
 The tests for response should pass
+
+If it doesn't, then check the token has the right permissions and has been entered in fully, or that newman has been installed globally
+
+6. Now run the command 'npm install -g newman-reporter-htmlextra', this will install a reporter so that you can view results easier
+
+7. Run the command:
+'newman run UserBasedRequests.postman_collection.json -g SpotifyWorkspace.postman_globals.json -r htmlextra --reporter-htmlextra-title "Automated test reporting - Postman echo"'
+
+- The code will run but nothing will appear in the command line, check the folder with the repository in, you will see a new folder called 'newman'
+- In this folder will be the report to open, you can see the response body also containing the results of the check
+
+
+
+If you run the PlaylistsBasedRequests, then check your spotify and you should have a new playlist added to it.
