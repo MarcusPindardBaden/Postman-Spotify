@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "431b55db-9d72-4af7-b812-7612fc77d9d4",
+		"name": "PlaylistBasedRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "979d3f9d-e4fd-46b4-be4a-1edc6410d436",
+						"exec": [
+							"pm.test(\"response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData);\r",
+							"pm.test(\"Playlist has correct name\", function()\r",
+							"{\r",
+							"    pm.expect(jsonData.name).to.eql(\"Postman Pat and his stompin' hat\");\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQB0lM2vMg73UQ1OQcbBpjAciyeNXnzOp7gWcVpK1Z2ye7Lx3OHpqwum0-zeGLVSx6mPiwzUrvpxbJUH7jRQCc3e58aMWGiTsIj2i-TRf92IzrnPj5pLYP3YktNLlYenDbJFUjyfwPK9A5rrp9KdpCAz8WQI6QsDHS-xbK39RSyNYx7H84MJ4CFMjkzLEp6WxYSpKtMCmyyxNAYhT87EeXawOkrJ_Oxs6N0wFposaUGDMQatGbMKTRBXmJpdWQXrKPPdfuC7suEoPTZH",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Postman Pat and his stompin' hat\",\r\n  \"description\": \"I made this playlist through Postman. Who needs spotify anyway\",\r\n  \"public\": false\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/1111931758/playlists",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"1111931758",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adding some tracks to a playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c1cc652-59c7-4e16-b073-5cc9f6445399",
+						"exec": [
+							"pm.test(\"Response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQB-r7XA6w0oOe-F6bxIatKw2JERn7f-pPIEHcdSCWQs8_f9xymtNG4I9Xt7uwa1K-5azuqkpH6ObtLEyaRFiWQvR2dbp8rQvBjZ0LZDKAutOeKkLXuF8wcN-OjSvn3TY0ehniZq7HBDhHgWMzyNNrsWsDNcp6P9f0JEgm_lMQ3FzIyDQJbhlNnRNXWTSC6JFKUHaS2R47wxkzIP6MRh4gM87UyVQ37ivc4zzLaQrzH3uvVIb5phpKxeT_gAEDQy433ZgWlwI1OM6loK",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/playlists/57XkB36BVrjpgYDfZhIQ0n/tracks?position=0&uris=spotify:track:0MeY8esUmEGqhXtxVXsuKX",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"playlists",
+						"57XkB36BVrjpgYDfZhIQ0n",
+						"tracks"
+					],
+					"query": [
+						{
+							"key": "position",
+							"value": "0"
+						},
+						{
+							"key": "uris",
+							"value": "spotify:track:0MeY8esUmEGqhXtxVXsuKX"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting songs from a playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32caab01-ac25-4aac-b897-600ad25e3133",
+						"exec": [
+							"pm.test(\"Response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQB-r7XA6w0oOe-F6bxIatKw2JERn7f-pPIEHcdSCWQs8_f9xymtNG4I9Xt7uwa1K-5azuqkpH6ObtLEyaRFiWQvR2dbp8rQvBjZ0LZDKAutOeKkLXuF8wcN-OjSvn3TY0ehniZq7HBDhHgWMzyNNrsWsDNcp6P9f0JEgm_lMQ3FzIyDQJbhlNnRNXWTSC6JFKUHaS2R47wxkzIP6MRh4gM87UyVQ37ivc4zzLaQrzH3uvVIb5phpKxeT_gAEDQy433ZgWlwI1OM6loK",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tracks\": [\r\n    {\r\n      \"uri\": \"spotify:track:0MeY8esUmEGqhXtxVXsuKX\",\r\n      \"positions\": [\r\n        0\r\n      ]\r\n    }  \r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/playlists/57XkB36BVrjpgYDfZhIQ0n/tracks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"playlists",
+						"57XkB36BVrjpgYDfZhIQ0n",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3ebccebc-553e-4282-b24f-c273751bcc8c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f3feaee4-5007-430e-a8bf-bf3b9ab411ef",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "de8c63e9-5bdb-436c-a049-ee3cf9edcb34",
+			"key": "url",
+			"value": "",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

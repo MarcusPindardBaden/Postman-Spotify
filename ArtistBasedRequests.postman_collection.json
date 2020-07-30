@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "807b9992-29e2-48eb-ae46-67e06f3a9099",
+		"name": "ArtistBasedRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find an artists top songs for a certain country",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQDkwzOdARqHfO-4TIfKqEKwwYNXCqM42SYUjFYZaJL9AH0q4E0oOl24TeifgidrV6ku0cFCIcFTt_eC72tePIR9sNOfsZlCr3eqK4lS_1KjANf-lMlIFFLFC3eQ4gZdaojtVLcw8XnlSASyaS59m3rBK2dmfzc3",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/artists/0Bk4GBz9noYmwDOtma9404/top-tracks?country=GB",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"artists",
+						"0Bk4GBz9noYmwDOtma9404",
+						"top-tracks"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "GB"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "536321f3-91d1-4b3b-aa51-5df36b30729c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b91a7d21-7bd2-4b00-a965-1672f7b57b39",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "60afb6ef-ea4a-4117-a3c2-d5af47678b12",
+			"key": "url",
+			"value": "https://api.spotify.com/v1",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "698df292-a8c4-4736-b24d-97f41715668b",
+		"name": "SongBasedRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get track audio features",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQDkwzOdARqHfO-4TIfKqEKwwYNXCqM42SYUjFYZaJL9AH0q4E0oOl24TeifgidrV6ku0cFCIcFTt_eC72tePIR9sNOfsZlCr3eqK4lS_1KjANf-lMlIFFLFC3eQ4gZdaojtVLcw8XnlSASyaS59m3rBK2dmfzc3",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/audio-features?ids=45uDtD6s3y0V4tkWZrPDXy",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"audio-features"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "45uDtD6s3y0V4tkWZrPDXy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "What are you playing now?",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQBE-p4tA_CVrONNP1IGl9Rzo9nZywM6XDnAr6-9LcAPRV2vp8iuIYgGVFMjnFLnMeRzO2weY-zl0A-nl4PlZVprEGKZVKTpb9QR1aEBIdZHIGdtA25pzdM-EZluR7OCno-v84LedzJZRfLTXQVHbiCyi16yFFECJ3D7-WxSr-d1XgD8zsMETjIYDQEA97KJKNzZkK4uSgtJ0SGqZJfvvfSOJii7s_HGtAy1hw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/me/player/currently-playing",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"me",
+						"player",
+						"currently-playing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a song to my queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ec5d925-d36a-4f3d-ab89-8805e3f79af8",
+						"exec": [
+							"pm.test(\"response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQAL89KxHhsAWBm7dlBx2K0JgwqVJlkQwEwFwUp0OVNpN4xGNPZEZW8lx4weomn-H1WrGxbLjDbuHni0s9Mp4CghMVVf59kfPpSoN7cQvd8vBcPhVZB7s7BkhbMkjYOO3UwSSsP8P6sFicngSFPi4MqNlKBVu5juoYjvOgBzGu3P2mb9wv7cLxo7vhqZxUXzUWfJ1_nZXH2M7bJkMzBMOmWrXF8lprtmyoHcewJUyoJIg1CuHmq1EQ",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/me/player/queue?uri=spotify:track:2UWdUez9MB9yzL7Y81Mcip&device_id=c8e7ae66fc961fe027d1fb4b20f254f22ee0f096",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"me",
+						"player",
+						"queue"
+					],
+					"query": [
+						{
+							"key": "uri",
+							"value": "spotify:track:2UWdUez9MB9yzL7Y81Mcip"
+						},
+						{
+							"key": "device_id",
+							"value": "c8e7ae66fc961fe027d1fb4b20f254f22ee0f096"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pause the song",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQA8uXwtUb6cXiR5NEAGYN2cxGyv-LveIYnsJA0bS3Mm7zhAtdCK2yGpOSPqVpEjD0SjMzVMasIH6691RvC4HBi17d-r4c2deJVKy9cG16_PHREpCBx5rllF8EM1F-k5D5ABKgj4qVk9LtmK9nu9_XxajCEmN8VJhS72fjsYndEBmP_czRFEOLuFvqFJMwsSKVQ_vV3upN_PIVdivtsaU0qu0y0kf2QMxBR001Mnhl92-kA35W8mZT6o0z4aiA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/me/player/pause",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"me",
+						"player",
+						"pause"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9343720b-1955-4f5e-9f18-c5a13d8e367f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6bad47b3-6c0f-4771-955a-226f7accdf46",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cee3d05b-d35d-46f5-b82b-a7abb18529bf",
+			"key": "url",
+			"value": "https://api.spotify.com/v1",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}

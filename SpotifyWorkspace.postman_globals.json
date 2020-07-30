@@ -1,0 +1,19 @@
+{
+	"id": "1cf97fc1-be65-4cc6-86af-c8dfe7baaf60",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://api.spotify.com/v1",
+			"enabled": true
+		},
+		{
+			"key": "Auth",
+			"value": "BQDAExodcz1YtO0LHO6bM_vOryYImnTybQ7djIpB3RXB3vD9JN_fX-7Qwrju7AYeU7lUu_QM9k7Sv3ePmlHlPpJ19FexV7kYIy88FsvatDVi1f_ReOvuGyHgLrlQHM_urU_Z1yF6jWol_c67STqkhCyn2q8gtQT5CBHIeJHdrynj4d6h3yehFWIkB2MWQC-0IgdabJedf9AbBioOUuxp5CQCp0MdEcDwfb6RYXnNEzuyawaA9hXQAXGVnNXIrY63UDA-4RpI6XCl_M1H",
+			"enabled": true
+		}
+	],
+	"name": "SpotifyWorkspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2020-07-30T14:55:23.069Z",
+	"_postman_exported_using": "Postman/7.29.1"
+}

@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "8f690dfe-9d71-4a7e-bc3f-99c909da2227",
+		"name": "UserBasedRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Getting users' top 10 artists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "163da28b-3177-4dba-ab24-9c6c8825c22b",
+						"exec": [
+							"pm.test(\"Response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Body contains string\", function ()\r",
+							"{\r",
+							"    pm.expect(pm.response.text()).to.include(\"Drake\");\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"// console.log(jsonData);\r",
+							"// pm.test(\"Check if name is correct\", function() \r",
+							"// {\r",
+							"//     pm.expect(jsonData.name).is.to.equal('Drake');\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8fae5c38-cdb9-41d7-bc2b-5bc97bc7dd16",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQDu7YohTgwmOycFA9vumOwbMoJgO5vl9fNFzRQOjlSMXC7aPV_PPHOMvbTGsdUaIPPHOIqaijaXk9LCxBy74A2KBo-HzaUVwyGI-cQyS7t_txY_c5kLN3CLa4aV_ZrRJGSGeYDHAcNxFaEY52RPbK4Fr2oNo4fl1HGV2MLe7TvrErer86LLNqd8TfXOHtK4gxPJ1rWdvrKC4gWGrtvy0kJQixhkdhsf24sLsAMk8yZ1a41DF9SBADkh3l6ty_S44uNfCgUZTg84gToC",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/me/top/artists?time_range=long_term&limit=10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"me",
+						"top",
+						"artists"
+					],
+					"query": [
+						{
+							"key": "time_range",
+							"value": "long_term"
+						},
+						{
+							"key": "offset",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				},
+				"description": "Finding out my own top artists"
+			},
+			"response": []
+		},
+		{
+			"name": "Getting users top 10 songs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2286ad7-1c51-43ec-ab0c-e62786daa1a1",
+						"exec": [
+							"pm.test(\"Response is good\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json\r",
+							"console.log(jsonData);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{Auth}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer BQDu7YohTgwmOycFA9vumOwbMoJgO5vl9fNFzRQOjlSMXC7aPV_PPHOMvbTGsdUaIPPHOIqaijaXk9LCxBy74A2KBo-HzaUVwyGI-cQyS7t_txY_c5kLN3CLa4aV_ZrRJGSGeYDHAcNxFaEY52RPbK4Fr2oNo4fl1HGV2MLe7TvrErer86LLNqd8TfXOHtK4gxPJ1rWdvrKC4gWGrtvy0kJQixhkdhsf24sLsAMk8yZ1a41DF9SBADkh3l6ty_S44uNfCgUZTg84gToC",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/me/top/tracks?time_range=short_term&limit=10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"me",
+						"top",
+						"tracks"
+					],
+					"query": [
+						{
+							"key": "time_range",
+							"value": "short_term"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "377a03c0-446f-412d-9493-392cde9b8bbb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "647c19a3-2d11-4c03-be7a-376edf2387f6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "63e5f99c-02fd-48f4-8337-bd4d97e74bf8",
+			"key": "url",
+			"value": "https://api.spotify.com/v1",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
